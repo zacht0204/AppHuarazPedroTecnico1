@@ -22,7 +22,7 @@ import com.huaraz.luis.apphuarazTecnico.Model.Pet;
 import com.huaraz.luis.apphuarazTecnico.Model.PetLost;
 import com.huaraz.luis.apphuarazTecnico.Servicio.APIService;
 import com.huaraz.luis.apphuarazTecnico.Servicio.ApiUtils;
-
+import android.os.AsyncTask;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -213,7 +213,9 @@ public class Inicio extends Fragment {
             }
         });
         LostPet = new NoticiaAdapter(getActivity(),itemsPets);
+        lv.deferNotifyDataSetChanged();
         lv.setAdapter(LostPet);
+
 
 
         return  root;

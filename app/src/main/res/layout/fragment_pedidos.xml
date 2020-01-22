@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="8dp"
+    tools:context="com.huaraz.luis.apphuarazTecnico.Pedidos"
     android:weightSum="1">
 
     <LinearLayout
@@ -14,15 +15,16 @@
 
     <ListView
         android:id="@+id/lista_demos"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:alwaysDrawnWithCache="true"
-        android:dividerHeight="14dp"
-        android:horizontalSpacing="12dp"
+        android:dividerHeight="1dp"
+        android:horizontalSpacing="2dp"
         android:scrollingCache="true"
         android:smoothScrollbar="true"
         android:stretchMode="columnWidth"
         android:verticalSpacing="3dp"
+        android:listSelector="@color/selector"
 
         >
 

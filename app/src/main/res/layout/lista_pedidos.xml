@@ -23,16 +23,36 @@
         android:textColor="@color/texto"
         tools:text="" />
 
+    <TextView
+        android:id="@+id/petName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:text=""
+        android:textAppearance="?attr/textAppearanceListItem"
+        tools:text="Captura de Plantas: Huaraz"
+        android:textColor="@color/titulo"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/Provincia" />
 
 
 
     <TextView
-        android:id="@+id/petInfo"
+        android:id="@+id/ProvinciaT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop= "75dp"
-        android:text="Cuenta: "
+        android:layout_marginTop= "30dp"
+        android:text="Pronvincia:"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:id="@+id/Provincia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ProvinciaT"
+        android:layout_alignStart="@+id/ProvinciaT"
+        android:text="Pronvincia"
         android:textColor="@color/textColor"/>
 
 
@@ -46,27 +66,24 @@
 
 
 
-
-
     <TextView
-        android:id="@+id/fecha"
+        android:id="@+id/DistritoT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Moneda: "
-        android:layout_below="@+id/petInfo"
-        android:layout_alignStart="@+id/petInfo"
+        android:text="Distrito:"
+        android:layout_below="@+id/Provincia"
+        android:layout_alignStart="@+id/Provincia"
         android:textColor="@color/textColor"/>
 
     <TextView
-        android:id="@+id/petName"
+        android:id="@+id/Distrito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:text="Nombre"
-        android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="DIVIDENDO SOLES"
-        android:textColor="@color/titulo"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/petInfo" />
+        android:text="Distrito"
+        android:layout_below="@+id/DistritoT"
+        android:layout_alignStart="@+id/DistritoT"
+        android:textColor="@color/textColor"/>
+
+
 
 </RelativeLayout>

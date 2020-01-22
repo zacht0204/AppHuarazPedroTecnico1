@@ -199,7 +199,7 @@ public class capturarPlanta extends Fragment {
         Bitmap bitmap3 = drawable3.getBitmap();
 
         ByteArrayOutputStream bos3 = new ByteArrayOutputStream();
-        bitmap3.compress(Bitmap.CompressFormat.PNG, 100, bos3);
+        bitmap3.compress(Bitmap.CompressFormat.WEBP, 100, bos3);
         byte[] bb3 = bos3.toByteArray();
         String petPhoto643 = Base64.encodeToString(bb3, 0);
 

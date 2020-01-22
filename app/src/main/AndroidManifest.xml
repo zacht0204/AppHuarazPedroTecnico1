@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Proveedores"></activity>
+        <activity android:name=".Fotografia"></activity>
+        <activity android:name=".registro_usuario" />
         <activity android:name=".DetallePedido" />
         <activity android:name=".MainActivity" />
         <activity

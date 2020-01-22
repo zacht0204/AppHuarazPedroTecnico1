@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import android.os.AsyncTask;
 import com.huaraz.luis.apphuarazTecnico.Adaptador.DemoAdapter;
-import com.huaraz.luis.apphuarazTecnico.Adaptador.PetAdapter;
+import com.huaraz.luis.apphuarazTecnico.Adaptador.NoticiaAdapter;
+import com.huaraz.luis.apphuarazTecnico.Adaptador.PedidosAdapter;
 import com.huaraz.luis.apphuarazTecnico.Model.Demo;
+import com.huaraz.luis.apphuarazTecnico.Model.Noticias;
 import com.huaraz.luis.apphuarazTecnico.Model.Pet;
 import com.huaraz.luis.apphuarazTecnico.Servicio.APIService;
 import com.huaraz.luis.apphuarazTecnico.Servicio.ApiUtils;
@@ -27,9 +29,11 @@ import retrofit2.Response;
 
 public class Pedidos extends Fragment {
     private APIService mAPIService;
-    DemoAdapter pet;
+    PedidosAdapter pet;
     private FloatingActionButton fabAddPet;
     ListView lv;
+
+    ArrayList<Demo> fotografia= new ArrayList<>();
 
     public Pedidos() {
         // Required empty public constructor
@@ -44,9 +48,23 @@ public class Pedidos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_pets, container, false);
+        View root = inflater.inflate(R.layout.fragment_pedidos, container, false);
 
         lv = (ListView) root.findViewById(R.id.lista_demos);
+
+        mAPIService = ApiUtils.getAPIService();  ///Crear variable global para realizar una conexion unica
+        loadProfile();
+       /*
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                System.out.println("hola");
+                Intent in  = new Intent(getActivity(),Fotografia.class);
+                startActivity(in);
+
+            }
+        });*/
 
 
 
@@ -63,8 +81,7 @@ public class Pedidos extends Fragment {
         // AsyncCallWS task = new AsyncCallWS();
         //task.execute();
         //Evento de pruebas
-        mAPIService = ApiUtils.getAPIService();
-        loadProfile();
+
 
 
 
@@ -73,7 +90,10 @@ public class Pedidos extends Fragment {
     }
 
     public  void  loadProfile(){
-        final List<Demo> itemsLostPets = new ArrayList<>();
+
+
+        //final
+
         // final List<Pet> itemsPet = new ArrayList<>();
         System.out.println("Demo Demo");
         mAPIService.getFoto().enqueue(new Callback<List<Demo>>() {
@@ -83,9 +103,9 @@ public class Pedidos extends Fragment {
 
                 if(response.isSuccessful()) {
                     for(int i=0;i<response.body().size();i++){
-                        itemsLostPets.add(response.body().get(i));
+                        fotografia.add(response.body().get(i));
                         // itemsPet.add(response.body().get(i).getPet());
-                        System.out.println("Luis"+itemsLostPets.get(i).getId_distrito().toString());
+                        System.out.println("Luis"+fotografia.get(i).getId_distrito().toString());
                         // System.out.println("array ++"+itemsLostPets.get(i).getInfo()+"Name"+itemsPet.get(i).getName());
 
 
@@ -98,21 +118,30 @@ public class Pedidos extends Fragment {
                 }
                 if (getActivity()!=null){
 
-                    pet = new DemoAdapter (getActivity(),itemsLostPets);
+                    pet = new PedidosAdapter (getActivity(),fotografia);
+                  //  lv.setLa;
+                    lv.deferNotifyDataSetChanged();
                     lv.setAdapter(pet);
 
                     lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                            Toast.makeText(getActivity(),"Evento Proximo a Informarle ",Toast.LENGTH_SHORT).show();
 
-                            Intent in  = new Intent(getActivity(),DetallePedido.class);
+                            Demo de =  pet.getItem(i);
+                            Intent in  = new Intent(getActivity(),Fotografia.class);
+
+                            in.putExtra("foto01",de.getId_foto1());
+                            in.putExtra("foto02",de.getId_foto2());
+                            in.putExtra("foto03",de.getId_foto3());
+
                             startActivity(in);
+
 
 
                         }
                     });
+
 
                     System.out.println("3");
                 }////codigo importante
@@ -154,9 +183,10 @@ public class Pedidos extends Fragment {
                 }
                 if (getActivity()!=null){
 
-                    /*
+                 /*
                 pet = new PetAdapter(getActivity(),itemsPets);
-                lv.setAdapter(pet);*/
+                lv.setAdapter(pet);
+                */
                 }
             }
 

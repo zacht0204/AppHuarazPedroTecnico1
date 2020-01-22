@@ -15,10 +15,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.huaraz.luis.apphuarazTecnico.Model.Demo;
+import com.huaraz.luis.apphuarazTecnico.Model.Usuario;
 import com.huaraz.luis.apphuarazTecnico.Servicio.APIService;
 import com.huaraz.luis.apphuarazTecnico.Servicio.ApiUtils;
 import com.huaraz.luis.apphuarazTecnico.Servicio.Peticion;
 import com.huaraz.luis.apphuarazTecnico.Servicio.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class loginPet extends AppCompatActivity {
     private Toolbar toolbar;
@@ -35,6 +44,8 @@ public class loginPet extends AppCompatActivity {
 
     public static  int id_user=0;
     public  static String correo_user=null;
+    ArrayList<Usuario> listaUsuarios= new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -206,7 +217,8 @@ public class loginPet extends AppCompatActivity {
         //metoo de login
     public void getIngreso(String usuario , String contrasena){
 
-        Peticion peticion = new Peticion();
+        Usuario usuario1 = new Usuario();
+        String dni="11111111";
         /*
         User user = new User();
       //  usuario="admin";
@@ -216,7 +228,7 @@ public class loginPet extends AppCompatActivity {
         peticion.setUser(user);
         */
 
-
+/*
          if(usuario.equalsIgnoreCase("admin") && contrasena.equalsIgnoreCase("admin")){
 
              Intent in = new Intent(loginPet.this,MainActivity.class);
@@ -227,7 +239,32 @@ public class loginPet extends AppCompatActivity {
 
              Toast.makeText(getApplicationContext(),"Usuario Incorrecto ",Toast.LENGTH_SHORT).show();
          }
+             */
 
+        mAPIService.getlogin(dni).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+                if(response.isSuccessful()) {
+                    System.out.println(response.body().getContrasena());
+
+                }else {
+                    int statusCode  = response.code();
+                    System.out.println("2"+statusCode);
+                    // handle request errors depending on status code
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+
+            }
+        });
+
+        Intent in = new Intent(loginPet.this,MainActivity.class);
+
+        startActivity(in);
       /*
 
         mAPIService.getIngreso(peticion).enqueue(new Callback<UserResponse>() {

@@ -9,6 +9,7 @@ import com.huaraz.luis.apphuarazTecnico.Model.PetLost;
 import com.huaraz.luis.apphuarazTecnico.Model.Search;
 import com.huaraz.luis.apphuarazTecnico.Model.Store;
 import com.huaraz.luis.apphuarazTecnico.Model.UserResponse;
+import com.huaraz.luis.apphuarazTecnico.Model.Usuario;
 
 
 import java.util.List;
@@ -49,9 +50,28 @@ public interface APIService {
                       @Field("id_provincia") String id_provincia);
 
    //////////////////////////////////
+   //Registro de usuario tecnico
+   @FormUrlEncoded
+   @POST("usuario.php")
+   Call<Usuario> addUsuario(@Field("nombres") String nombres,
+                            @Field("apellidos") String apellidos,
+                            @Field("dni") String dni,
+                            @Field("contrasena") String contrasena,
+                            @Field("correo") String correo,
+                            @Field("telefono") String telefono,
+                            @Field("tipo") int tipo);
+   ////////////////////////////////////////
+   //login del app
+   @GET("usuario/{dni}")
+   Call<Usuario> getlogin(@Path("dni") String dni);
+
+   ////////////////////////////////////////
+
    //Consultar  Pedidos for Users
     @GET("/users/{user}/pets.json")
    Call<List<Pet>> getMyPets(@Path("user") String user);
+
+
 
 
    //consutar profie for user

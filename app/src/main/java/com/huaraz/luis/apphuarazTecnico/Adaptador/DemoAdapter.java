@@ -54,12 +54,12 @@ public class DemoAdapter extends ArrayAdapter<Demo> {
                     false);
 
 
-        holder = new ViewHolder();
-        holder.photo = (ImageView) convertView.findViewById(R.id.petPhoto);
-        holder.photo2 = (ImageView) convertView.findViewById(R.id.petPhoto2);
-        holder.photo3 = (ImageView) convertView.findViewById(R.id.petPhoto3);
-        holder.name_pet = (TextView) convertView.findViewById(R.id.petName);
-        holder.info_pet = (TextView) convertView.findViewById(R.id.petInfo);
+       holder = new ViewHolder();
+ //       holder.photo = (ImageView) convertView.findViewById(R.id.petPhoto);
+//        holder.photo2 = (ImageView) convertView.findViewById(R.id.petPhoto2);
+ //       holder.photo3 = (ImageView) convertView.findViewById(R.id.petPhoto3);
+       // holder.name_pet = (TextView) convertView.findViewById(R.id.petName);
+       // holder.info_pet = (TextView) convertView.findViewById(R.id.petInfo);
 
 
      //  holder.fecha=(TextView) convertView.findViewById(R.id.fecha);
@@ -75,10 +75,10 @@ public class DemoAdapter extends ArrayAdapter<Demo> {
 
         // Configuracion
 
-        String foto=noti.getId_foto1();
-        String foto2=noti.getId_foto2();
-        String foto3=noti.getId_foto3();
-
+      //  String foto=noti.getId_foto1();
+     //   String foto2=noti.getId_foto2();
+     //   String foto3=noti.getId_foto3();
+ /*
         if(foto!=null){
          //Receiving side
         byte[] data1 = Base64.decode(foto, Base64.DEFAULT);
@@ -120,15 +120,15 @@ public class DemoAdapter extends ArrayAdapter<Demo> {
             }
 
         }
-
+   */
 /*
         Picasso.with(getContext())
                 .load("data:image/png;base64,"+noti.getId_foto1())
                 .resize(120, 120)
                 .into( holder.photo);
  */
-        holder.name_pet.setText(noti.getId_distrito());
-        holder.info_pet.setText(noti.getId_provincia());
+      //  holder.name_pet.setText(noti.getId_distrito());
+     //   holder.info_pet.setText(noti.getId_provincia());
         //holder.fecha.setText(noti.getFecha());
 
      /*
@@ -143,9 +143,9 @@ public class DemoAdapter extends ArrayAdapter<Demo> {
 
     static class ViewHolder {
 
-        ImageView photo;
-        ImageView photo2;
-        ImageView photo3;
+       // ImageView photo;
+      //  ImageView photo2;
+      //  ImageView photo3;
         TextView name_pet;
         TextView info_pet;
 
