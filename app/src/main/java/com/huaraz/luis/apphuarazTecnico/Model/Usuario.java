@@ -14,6 +14,32 @@ private int id_usuario;
 @Expose
 private String nombres;
 
+@SerializedName("apellidos")
+@Expose
+private String apellidos;
+
+@SerializedName("dni")
+@Expose
+private String dni;
+
+@SerializedName("contrasena")
+@Expose
+private String contrasena;
+
+@SerializedName("correo")
+@Expose
+private String correo;
+
+@SerializedName("telefono")
+@Expose
+private String telefono;
+
+
+@SerializedName("tipo")
+@Expose
+private int tipo;
+
+
     public int getId_usuario() {
         return id_usuario;
     }
@@ -71,39 +97,14 @@ private String nombres;
         this.tipo = tipo;
     }
 
-    @SerializedName("apellidos")
-@Expose
-private String apellidos;
 
-@SerializedName("dni")
-@Expose
-private String dni;
-
-public String getContrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
-public void setContrasena(String contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
-    @SerializedName("contrasena")
-@Expose
-private String contrasena;
-
-@SerializedName("correo")
-@Expose
-private String correo;
-
-@SerializedName("telefono")
-@Expose
-private String telefono;
-
-
-@SerializedName("tipo")
-@Expose
-private int tipo;
-
 
 
 

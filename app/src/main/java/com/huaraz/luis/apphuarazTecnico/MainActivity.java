@@ -1,5 +1,6 @@
 package com.huaraz.luis.apphuarazTecnico;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,12 +11,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar appbar;
     private DrawerLayout drawerLayout;
     private NavigationView navView;
+    String  nombres=null;
+    TextView nombrePerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        Intent intent=getIntent();
+        Bundle extras =intent.getExtras();
+        nombres= (String) extras.get("nombre");
+        String[] parts = nombres.split(" ");
+        nombres=parts[0];
+
+
 
 
 
@@ -118,6 +131,15 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+
+
+   //Personalizar la entrada del perfil
+        View header = navView.getHeaderView(0);
+        nombrePerfil = (TextView) header.findViewById(R.id.personalista);
+        nombrePerfil.setText(" Hola :"+nombres.toUpperCase().toString()+" ☺");
+
+
+
     }
 
     @Override

@@ -62,8 +62,8 @@ public interface APIService {
                             @Field("tipo") int tipo);
    ////////////////////////////////////////
    //login del app
-   @GET("usuario/{dni}")
-   Call<Usuario> getlogin(@Path("dni") String dni);
+   @GET("usuario.php?")
+   Call<Usuario>  getlogin(@Query("dni") String dni);
 
    ////////////////////////////////////////
 

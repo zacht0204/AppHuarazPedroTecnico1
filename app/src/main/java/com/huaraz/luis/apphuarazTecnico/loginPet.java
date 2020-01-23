@@ -9,10 +9,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huaraz.luis.apphuarazTecnico.Model.Demo;
@@ -37,14 +40,17 @@ public class loginPet extends AppCompatActivity {
     private EditText input_contrasena;
     private Context context = this;
     private String usuario;
+    private String contrasena;
+    private String contrasena2;
     Dialog customDialog = null;
     private APIService mAPIService;
     FragmentManager fragmentManager = getSupportFragmentManager();
-    private String contrasena;
+    //private String contrasena;
 
     public static  int id_user=0;
     public  static String correo_user=null;
     ArrayList<Usuario> listaUsuarios= new ArrayList<>();
+        Usuario per = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,10 +105,10 @@ public class loginPet extends AppCompatActivity {
                     //Ingreso de al menu de datos
                     if(input_contrasena.getText().length()!=0 && input_contrasena.getText().toString()!=""){
                         usuario = input_usuario.getText().toString();
-                        contrasena = input_contrasena.getText().toString();
+                        contrasena2 = input_contrasena.getText().toString();
 
                         //getIngreso(usuario,contrasena);
-                        getIngreso(usuario,contrasena);
+                        getIngreso(usuario,contrasena2);
                         input_usuario.setText("");
                         input_contrasena.setText("");
 
@@ -215,10 +221,99 @@ public class loginPet extends AppCompatActivity {
     }
 
         //metoo de login
-    public void getIngreso(String usuario , String contrasena){
+    public void     getIngreso(String usuario , String contrasena1){
 
-        Usuario usuario1 = new Usuario();
-        String dni="11111111";
+        contrasena=contrasena1;
+
+
+        mAPIService = ApiUtils.getAPIService();
+        try {
+
+            mAPIService.getlogin(usuario).enqueue(new Callback<Usuario>() {
+                @Override
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+                    if(response.isSuccessful()) {
+
+                        per.setNombres(response.body().getNombres());
+                        per.setApellidos(response.body().getApellidos());
+                        per.setDni(response.body().getDni());
+                        per.setContrasena(response.body().getContrasena());
+                         System.out.println("demo ++");
+
+                        if(per.getContrasena().equals(contrasena)){
+
+                            Toast toast = new Toast(getApplicationContext());
+
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.toast_layout,
+                                    (ViewGroup) findViewById(R.id.lytLayout));
+
+                            TextView txtMsg = (TextView)layout.findViewById(R.id.txtMensaje);
+                            txtMsg.setText("Bienvenido :"+per.getNombres()+" "+per.getApellidos());
+
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+                            System.out.println("Bienvenido"+per.getNombres()+per.getApellidos());
+
+                            Intent in = new Intent(loginPet.this,MainActivity.class);
+                            in.putExtra("nombre",per.getNombres());
+
+                            startActivity(in);
+
+                        }else{
+
+                            Toast toast = new Toast(getApplicationContext());
+
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.toast_layout,
+                                    (ViewGroup) findViewById(R.id.lytLayout));
+
+                            TextView txtMsg = (TextView)layout.findViewById(R.id.txtMensaje);
+                            txtMsg.setText("¡Contraseña Incorrecta! ");
+
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+                            System.out.println("Se registro Usuario Tecnico");
+
+
+                        }
+
+
+
+
+                    } else {
+                        int statusCode  = response.code();
+                        System.out.println("2"+statusCode);
+                        // handle request errors depending on status code
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<Usuario> call, Throwable t) {
+
+
+
+                }
+
+
+            });
+
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+        //usuario1.setDni(dni);
         /*
         User user = new User();
       //  usuario="admin";
@@ -241,30 +336,7 @@ public class loginPet extends AppCompatActivity {
          }
              */
 
-        mAPIService.getlogin(dni).enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
-                if(response.isSuccessful()) {
-                    System.out.println(response.body().getContrasena());
-
-                }else {
-                    int statusCode  = response.code();
-                    System.out.println("2"+statusCode);
-                    // handle request errors depending on status code
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-
-            }
-        });
-
-        Intent in = new Intent(loginPet.this,MainActivity.class);
-
-        startActivity(in);
       /*
 
         mAPIService.getIngreso(peticion).enqueue(new Callback<UserResponse>() {
@@ -307,6 +379,16 @@ public class loginPet extends AppCompatActivity {
 
     }
 
+
+    String validarContrasena(String usuario){
+
+
+
+
+        return contrasena;
+    }
+
+
     ///Verificar si cuenta con internet
     public Boolean isOnlineNet() {
 
@@ -330,4 +412,7 @@ public class loginPet extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
+
 }
