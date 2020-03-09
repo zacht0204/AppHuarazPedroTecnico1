@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.huaraz.luis.apphuarazTecnico.Model.Demo;
 import com.huaraz.luis.apphuarazTecnico.Model.Noticias;
+import com.huaraz.luis.apphuarazTecnico.Model.Pedido;
 import com.huaraz.luis.apphuarazTecnico.R;
 
 import java.util.List;
@@ -18,19 +19,19 @@ import java.util.List;
  * Created by java on 07/12/2016.
  */
 
-public class PedidosAdapter extends ArrayAdapter<Demo> {
+public class PedidosAdapter extends ArrayAdapter<Pedido> {
 
     String name=null;
 
-    public List<Demo> list;
+    public List<Pedido> list;
 
-    public PedidosAdapter(Context context, List<Demo> objects) {
+    public PedidosAdapter(Context context, List<Pedido> objects) {
         super(context, 0, objects);
         list = objects;
     }
 
     @Override
-    public Demo getItem(int position) {
+    public Pedido getItem(int position) {
         return list.get(position);
     }
 
@@ -62,7 +63,7 @@ public class PedidosAdapter extends ArrayAdapter<Demo> {
         }
 
         // Lead actual.
-        Demo demo = getItem(position);
+        Pedido demo = getItem(position);
         //demo = noti.get();
 
         // Configuracion
@@ -88,8 +89,8 @@ public class PedidosAdapter extends ArrayAdapter<Demo> {
                 .resize(120, 120)
                 .into( holder.photo);*/
 
-        holder.Provincia.setText(demo.getId_provincia());
-        holder.Distrito.setText(demo.getId_distrito());
+        holder.Provincia.setText(demo.getProvincia());
+        holder.Distrito.setText(demo.getDistrito());
        // holder.info_pet.setText(noti.getCaracteristica());
        // holder.fecha.setText(noti.getFecha());
 

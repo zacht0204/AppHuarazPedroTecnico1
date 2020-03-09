@@ -1,6 +1,7 @@
 package com.huaraz.luis.apphuarazTecnico;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ import com.huaraz.luis.apphuarazTecnico.Model.PetLost;
 import com.huaraz.luis.apphuarazTecnico.Servicio.APIService;
 import com.huaraz.luis.apphuarazTecnico.Servicio.ApiUtils;
 import android.os.AsyncTask;
+import android.widget.VideoView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +49,7 @@ public class Inicio extends Fragment {
     private Spinner spnDistrict;
     private Spinner spnPetType;
     private Button btnSearchLostPets,ocultar;
+    private VideoView video;
 
 
     ///////////
@@ -61,7 +66,18 @@ public class Inicio extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_inicio, container, false);
-    //    llSearchLostPets = (LinearLayout) root.findViewById(R.id.llSearchLostPets);
+
+        video=(VideoView) root.findViewById(R.id.videoView);
+
+        MediaController mc= new MediaController(getActivity());
+
+
+        String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.video;
+        video.setVideoURI(Uri.parse(path));
+        video.setMediaController(mc);
+        video.start();
+
+        //    llSearchLostPets = (LinearLayout) root.findViewById(R.id.llSearchLostPets);
       //  llSearchLostPets.setVisibility(View.GONE);
 
   //      spnDistrict = (Spinner) root.findViewById(R.id.district_spinner);
@@ -69,12 +85,12 @@ public class Inicio extends Fragment {
         ///bUSQIEDA DE LOS SPINER
 //        btnSearchLostPets = (Button) root.findViewById(R.id.btnSearchLostPets);
   //      ocultar = (Button)root.findViewById(R.id.ocultar);
-        String[] Distritos = {"LINCE","SAN MIGUEL","INDEPENDENCIA","SURCO","SAN ISIDRO","LA MOLINA","SAN MARTIN DE PORRES","LOS OLIVOS","MIRAFLORES","MIRAFLORES","SAN MIGUEL","COMAS"};
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.spinner_item,Distritos);
+   //     String[] Distritos = {"LINCE","SAN MIGUEL","INDEPENDENCIA","SURCO","SAN ISIDRO","LA MOLINA","SAN MARTIN DE PORRES","LOS OLIVOS","MIRAFLORES","MIRAFLORES","SAN MIGUEL","COMAS"};
+    //    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.spinner_item,Distritos);
       //  arrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 //        spnDistrict.setAdapter(arrayAdapter);
         ////Busquieda de tipos de mascostas
-        String[] Tipos = {"PERRO","GATO"};
+    //    String[] Tipos = {"PERRO","GATO"};
       //  ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.spinner_item,Tipos);
        // arrayAdapter2.setDropDownViewResource(R.layout.spinner_dropdown_item);
 //        spnPetType.setAdapter(arrayAdapter2);
@@ -171,7 +187,9 @@ public class Inicio extends Fragment {
                 startActivity(in);
             }
         });
-*/       Noticias no = new Noticias();
+        */
+/*
+        Noticias no = new Noticias();
         Noticias n1 = new Noticias();
         Noticias n2 = new Noticias();
         Noticias n3 = new Noticias();
@@ -216,7 +234,7 @@ public class Inicio extends Fragment {
         lv.deferNotifyDataSetChanged();
         lv.setAdapter(LostPet);
 
-
+  */
 
         return  root;
 

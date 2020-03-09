@@ -53,7 +53,7 @@
         android:layout_below="@+id/ProvinciaT"
         android:layout_alignStart="@+id/ProvinciaT"
         android:text="Pronvincia"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/evaluacion"/>
 
 
     <ImageView
@@ -82,7 +82,7 @@
         android:text="Distrito"
         android:layout_below="@+id/DistritoT"
         android:layout_alignStart="@+id/DistritoT"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/evaluacion"/>
 
 
 

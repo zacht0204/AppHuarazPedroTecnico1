@@ -4,12 +4,14 @@ package com.huaraz.luis.apphuarazTecnico.Servicio;
 
 import com.huaraz.luis.apphuarazTecnico.Model.Demo;
 import com.huaraz.luis.apphuarazTecnico.Model.Districts;
+import com.huaraz.luis.apphuarazTecnico.Model.Pedido;
 import com.huaraz.luis.apphuarazTecnico.Model.Pet;
 import com.huaraz.luis.apphuarazTecnico.Model.PetLost;
 import com.huaraz.luis.apphuarazTecnico.Model.Search;
 import com.huaraz.luis.apphuarazTecnico.Model.Store;
 import com.huaraz.luis.apphuarazTecnico.Model.UserResponse;
 import com.huaraz.luis.apphuarazTecnico.Model.Usuario;
+import com.huaraz.luis.apphuarazTecnico.Pedidos;
 
 
 import java.util.List;
@@ -40,6 +42,11 @@ public interface APIService {
    @GET("post.php")
    Call<List<Demo>> getFoto();
 
+
+   //consultar pedidos de todos
+   @GET("pedido.php")
+   Call<List<Pedido>> getPedido();
+
    //Registrar foto
    @FormUrlEncoded
    @POST("post.php")
@@ -61,6 +68,14 @@ public interface APIService {
                             @Field("telefono") String telefono,
                             @Field("tipo") int tipo);
    ////////////////////////////////////////
+   //Busqueda por Pedido
+
+   @GET("Detallepedido.php?")
+   Call<Pedido>   getMyPedidoD(@Query("id_pedido") int id_pedido);
+
+
+
+   ////////////////////////////////
    //login del app
    @GET("usuario.php?")
    Call<Usuario>  getlogin(@Query("dni") String dni);

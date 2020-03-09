@@ -239,9 +239,10 @@ public class loginPet extends AppCompatActivity {
                         per.setApellidos(response.body().getApellidos());
                         per.setDni(response.body().getDni());
                         per.setContrasena(response.body().getContrasena());
+                        per.setTipo(response.body().getTipo());
                          System.out.println("demo ++");
 
-                        if(per.getContrasena().equals(contrasena)){
+                        if(per.getContrasena().equals(contrasena)&&(2==per.getTipo())){
 
                             Toast toast = new Toast(getApplicationContext());
 

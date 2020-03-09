@@ -42,8 +42,8 @@
                 android:padding="5px"
                 android:drawableLeft="@drawable/mini"
 
-                android:text="Registro de Plantas "
-                android:textColor="@color/icons"
+                android:text="Muestra de Cultivo"
+                android:textColor="@color/evaluacion"
                 android:textSize="26sp" />
 <!--
             <TextView
@@ -115,7 +115,7 @@
                 android:gravity="center"
                 android:layout_column="0"
                 android:textColor="@color/icons"
-                android:text="Fotografia 01"
+                android:text="Flor o fruto"
                 android:textSize="20sp" />
 
 
@@ -166,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Fotografia 02"
+                android:text="Hoja"
                 android:textColor="@color/icons"
                 android:textSize="20sp" />
 
@@ -228,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/icons"
                 android:gravity="center"
-                android:text="Fotografia 03"
+                android:text="Raiz o Tallo"
                 android:textSize="20sp" />
 
 

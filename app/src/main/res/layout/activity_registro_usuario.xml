@@ -110,7 +110,7 @@
                 android:textColor="#000000"
                 android:inputType="phone"
                 android:maxLength="9"
-                android:hint="Telefono"/>
+                android:hint="Numero de Celular"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
