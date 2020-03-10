@@ -55,6 +55,13 @@ public class PedidosAdapter extends ArrayAdapter<Pedido> {
     //    holder.photo = (ImageView) convertView.findViewById(R.id.petPhoto);
         holder.Provincia = (TextView) convertView.findViewById(R.id.Provincia);
         holder.Distrito = (TextView) convertView.findViewById(R.id.Distrito);
+        holder.Temperatura = (TextView) convertView.findViewById(R.id.Temperatura);
+        holder.Estado = (TextView) convertView.findViewById(R.id.Estado);
+        holder.User = (TextView) convertView.findViewById(R.id.User);
+        holder.DNI = (TextView) convertView.findViewById(R.id.DNI);
+        holder.tele = (TextView) convertView.findViewById(R.id.tele);
+        holder.date = (TextView) convertView.findViewById(R.id.date);
+
     //    holder.fecha=(TextView) convertView.findViewById(R.id.fecha);
 
         convertView.setTag(holder);
@@ -91,6 +98,20 @@ public class PedidosAdapter extends ArrayAdapter<Pedido> {
 
         holder.Provincia.setText(demo.getProvincia());
         holder.Distrito.setText(demo.getDistrito());
+        holder.Temperatura.setText(demo.getTemperatura());
+        String respuesta=null;
+        int valor=demo.getEstado();
+        if(valor==1){
+            respuesta="En Evaluacion";
+        }else{
+
+        }
+        holder.Estado.setText(respuesta);
+        String nombres=demo.getNombres()+" "+demo.getApellidos();
+        holder.User.setText(nombres);
+        holder.DNI.setText(demo.getDni());
+        holder.tele.setText(demo.getTelefono());
+        holder.date.setText(demo.getFecha());
        // holder.info_pet.setText(noti.getCaracteristica());
        // holder.fecha.setText(noti.getFecha());
 
@@ -112,6 +133,15 @@ public class PedidosAdapter extends ArrayAdapter<Pedido> {
         TextView fecha;
         TextView Provincia;
         TextView Distrito;
+
+        TextView Temperatura;
+        TextView Estado;
+        TextView User;
+        TextView DNI;
+        TextView tele;
+        TextView date;
+
+
 
     }
 }

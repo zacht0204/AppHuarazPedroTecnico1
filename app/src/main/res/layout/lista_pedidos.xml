@@ -1,89 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Tabla"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:minHeight="?attr/listPreferredItemHeight"
-    android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="8dp">
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:stretchColumns="1" >
+
+    <TableRow
+        android:id="@+id/Cabecera"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+
+            android:id="@+id/petName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_span="2"
+            android:textSize="20dp"
+            android:text="Captura de Plantas Huaraz"
+            android:gravity="left"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/titulo"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/Provincia" />
+    </TableRow>
 
 
-    <ImageView
-        android:id="@+id/petPhoto"
-        android:layout_width="220dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/demo"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/tecnico1"
-        android:text="Compañía"
-        android:textColor="@color/texto"
-        tools:text="" />
+    <TableRow
+        android:id="@+id/SeparadorCabecera"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/petName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:text=""
-        android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Captura de Plantas: Huaraz"
-        android:textColor="@color/titulo"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/Provincia" />
+        <FrameLayout
+            android:id="@+id/LineaCabecera"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:layout_span="6"
+            android:background="#2e7d32" >
+        </FrameLayout>
+    </TableRow>
 
+    <TableRow
+        android:id="@+id/Fila1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
 
+        <TextView
+            android:id="@+id/Anio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Provincia:"
 
-    <TextView
-        android:id="@+id/ProvinciaT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop= "30dp"
-        android:text="Pronvincia:"
-        android:textColor="@color/textColor"/>
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/Provincia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ProvinciaT"
-        android:layout_alignStart="@+id/ProvinciaT"
-        android:text="Pronvincia"
-        android:textColor="@color/evaluacion"/>
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:background="@drawable/barra"
-        android:layout_height="4dp"
-        android:id="@+id/demo"
-        android:layout_alignLeft="@+id/desc_prod"
-        android:layout_below="@+id/petName"/>
-
-
-
-    <TextView
-        android:id="@+id/DistritoT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Distrito:"
-        android:layout_below="@+id/Provincia"
-        android:layout_alignStart="@+id/Provincia"
-        android:textColor="@color/textColor"/>
-
-    <TextView
-        android:id="@+id/Distrito"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Distrito"
-        android:layout_below="@+id/DistritoT"
-        android:layout_alignStart="@+id/DistritoT"
-        android:textColor="@color/evaluacion"/>
+        <TextView
+            android:id="@+id/Provincia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
 
 
 
-</RelativeLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/Fila2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Provincia:"
+            android:textColor="#03A9F4"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Distrito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/Fila3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Temperatura:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Temperatura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/Fila5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Estado:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Estado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/Fila6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Provincia:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/User"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/Fila7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Provincia:"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/DNI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/Fila8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Provincia:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tele"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="París"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/Fila4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/Anio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Provincia:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="date"
+            android:textSize="20sp"
+            android:textColor="@color/evaluacion"/>
+    </TableRow>
+
+
+
+
+
+</TableLayout>

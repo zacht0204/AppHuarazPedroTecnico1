@@ -8,7 +8,7 @@ public class Pedido {
 
     @SerializedName("id_pedido")
     @Expose
-    private Integer id_pedido;
+    private int id_pedido;
 
     @SerializedName("foto_01")
     @Expose
@@ -58,6 +58,62 @@ public class Pedido {
     @Expose
     private String temperatura;
 
+    @SerializedName("apellidos")
+    @Expose
+    private String apellidos;
+
+    @SerializedName("nombres")
+    @Expose
+    private String nombres;
+
+    @SerializedName("dni")
+    @Expose
+    private String dni;
+
+    @SerializedName("telefono")
+    @Expose
+    private String telefono;
+
+
+    public int getId_pedido() {
+        return id_pedido;
+    }
+
+    public void setId_pedido(int id_pedido) {
+        this.id_pedido = id_pedido;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public String getFecha() {
         return fecha;
@@ -67,13 +123,7 @@ public class Pedido {
         this.fecha = fecha;
     }
 
-    public Integer getId_pedido() {
-        return id_pedido;
-    }
 
-    public void setId_pedido(Integer id_pedido) {
-        this.id_pedido = id_pedido;
-    }
 
 
     public String getFoto_01() {
